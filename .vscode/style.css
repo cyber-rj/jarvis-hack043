@@ -1,0 +1,445 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Source Code Pro', monospace;
+}
+
+body {
+    background-color: #000;
+    color: #0f0;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+.matrix-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: -1;
+    opacity: 0.3;
+    overflow: hidden;
+}
+
+.matrix-background::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(transparent 90%, rgba(0, 255, 0, 0.1));
+    animation: matrixRain 5s linear infinite;
+}
+
+@keyframes matrixRain {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 0 100%;
+    }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-bottom: 1px dashed #0f0;
+}
+
+.glitch {
+    position: relative;
+    color: #0f0;
+    font-size: 3rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 #f00;
+    animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 #00f;
+    animation: glitch-anim-2 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+    0% {
+        clip-path: polygon(0 0%, 100% 0%, 100% 45%, 0 45%);
+    }
+    20% {
+        clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+    }
+    40% {
+        clip-path: polygon(0 40%, 100% 40%, 100% 75%, 0 75%);
+    }
+    60% {
+        clip-path: polygon(0 70%, 100% 70%, 100% 80%, 0 80%);
+    }
+    80% {
+        clip-path: polygon(0 20%, 100% 20%, 100% 30%, 0 30%);
+    }
+    100% {
+        clip-path: polygon(0 50%, 100% 50%, 100% 70%, 0 70%);
+    }
+}
+
+@keyframes glitch-anim-2 {
+    0% {
+        clip-path: polygon(0 15%, 100% 15%, 100% 30%, 0 30%);
+    }
+    20% {
+        clip-path: polygon(0 3%, 100% 3%, 100% 25%, 0 25%);
+    }
+    40% {
+        clip-path: polygon(0 55%, 100% 55%, 100% 70%, 0 70%);
+    }
+    60% {
+        clip-path: polygon(0 30%, 100% 30%, 100% 55%, 0 55%);
+    }
+    80% {
+        clip-path: polygon(0 70%, 100% 70%, 100% 90%, 0 90%);
+    }
+    100% {
+        clip-path: polygon(0 10%, 100% 10%, 100% 80%, 0 80%);
+    }
+}
+
+.subtitle {
+    color: #0a0;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.scanner-box {
+    background-color: rgba(0, 20, 0, 0.7);
+    border: 1px solid #0f0;
+    border-radius: 5px;
+    padding: 2rem;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+    margin-bottom: 2rem;
+}
+
+.input-group {
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 0.8rem;
+    background-color: #000;
+    border: 1px solid #0f0;
+    color: #0f0;
+    font-size: 1rem;
+    outline: none;
+}
+
+.input-group input:focus {
+    border-color: #0a0;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.input-group button {
+    padding: 0.8rem 1.5rem;
+    background-color: #0a0;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    transition: all 0.3s;
+}
+
+.input-group button:hover {
+    background-color: #0f0;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #0a0;
+}
+
+.tab-btn {
+    padding: 0.8rem 1.5rem;
+    background-color: transparent;
+    border: none;
+    color: #0a0;
+    cursor: pointer;
+    font-size: 1rem;
+    position: relative;
+}
+
+.tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #0f0;
+    transition: width 0.3s;
+}
+
+.tab-btn:hover::after {
+    width: 100%;
+}
+
+.tab-btn.active {
+    color: #0f0;
+    font-weight: bold;
+}
+
+.tab-btn.active::after {
+    width: 100%;
+}
+
+.tab-content {
+    display: none;
+    padding: 1rem;
+    border: 1px solid #0a0;
+    border-radius: 5px;
+    background-color: rgba(0, 10, 0, 0.5);
+    min-height: 300px;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.status-box {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px solid #0a0;
+    border-radius: 5px;
+    background-color: rgba(0, 15, 0, 0.3);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #000;
+    border: 1px solid #0a0;
+    margin-top: 1rem;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    width: 0;
+    background-color: #0a0;
+    transition: width 0.5s;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.result-card {
+    padding: 1rem;
+    border: 1px solid #0a0;
+    border-radius: 5px;
+    background-color: rgba(0, 15, 0, 0.3);
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.result-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3);
+}
+
+.result-card h4 {
+    margin-bottom: 0.5rem;
+    color: #0f0;
+}
+
+.risk-level {
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #000;
+}
+
+.risk-level.critical {
+    background-color: #f00;
+    animation: pulse 1.5s infinite;
+}
+
+.risk-level.high {
+    background-color: #f80;
+}
+
+.risk-level.medium {
+    background-color: #ff0;
+    color: #000;
+}
+
+.risk-level.low {
+    background-color: #0a0;
+}
+
+.risk-level.none {
+    background-color: #0f0;
+}
+
+.risk-level.unknown {
+    background-color: #555;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.result-details {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px solid #0a0;
+    border-radius: 5px;
+    background-color: rgba(0, 15, 0, 0.3);
+    min-height: 150px;
+}
+
+.result-details p {
+    margin-bottom: 0.5rem;
+}
+
+.vulnerability {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-left: 3px solid #f00;
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+.vulnerability.low {
+    border-left-color: #0a0;
+    background-color: rgba(0, 255, 0, 0.1);
+}
+
+.vulnerability.medium {
+    border-left-color: #ff0;
+    background-color: rgba(255, 255, 0, 0.1);
+}
+
+.vulnerability.high {
+    border-left-color: #f80;
+    background-color: rgba(255, 128, 0, 0.1);
+}
+
+.vulnerability.critical {
+    border-left-color: #f00;
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+.remediation {
+    padding: 1rem;
+    border: 1px solid #0a0;
+    border-radius: 5px;
+    background-color: rgba(0, 20, 0, 0.5);
+}
+
+.remediation h4 {
+    margin-bottom: 1rem;
+    color: #0f0;
+}
+
+.remediation ul {
+    list-style-type: none;
+}
+
+.remediation li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.remediation li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: #0f0;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    border-top: 1px dashed #0f0;
+    font-size: 0.9rem;
+    color: #0a0;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .glitch {
+        font-size: 2rem;
+    }
+    
+    .input-group {
+        flex-direction: column;
+    }
+    
+    .input-group button {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+    
+    .tabs {
+        flex-wrap: wrap;
+    }
+    
+    .tab-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+}

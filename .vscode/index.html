@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSec Scanner| URL Security Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="matrix-background"></div>
+    <div class="container">
+        <header>
+            <h1 class="glitch" data-text="WebSec Scanner By Team Jarvis">WebSec Scanner By Team Jarvis</h1>
+            <p class="subtitle">Advanced URL Security Analysis Tool</p>
+        </header>
+
+        <div class="scanner-box">
+            <div class="input-group">
+                <input type="url" id="target-url" placeholder="https://example.com" required>
+                <button id="scan-btn">Scan</button>
+            </div>
+            
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="overview">Overview</button>
+                <button class="tab-btn" data-tab="sql">SQL Injection</button>
+                <button class="tab-btn" data-tab="xss">XSS</button>
+                <button class="tab-btn" data-tab="csrf">CSRF</button>
+                <button class="tab-btn" data-tab="directory">Directory Traversal</button>
+                <button class="tab-btn" data-tab="ssl">SSL/TLS</button>
+            </div>
+            
+            <div class="tab-content active" id="overview">
+                <div class="status-box">
+                    <h3>Scan Status: <span id="scan-status">Ready</span></h3>
+                    <div class="progress-bar">
+                        <div class="progress" id="scan-progress"></div>
+                    </div>
+                </div>
+                <div class="results-grid" id="overview-results">
+                    <div class="result-card" data-vuln="sql">
+                        <h4>SQL Injection</h4>
+                        <div class="risk-level unknown">Not Scanned</div>
+                    </div>
+                    <div class="result-card" data-vuln="xss">
+                        <h4>XSS</h4>
+                        <div class="risk-level unknown">Not Scanned</div>
+                    </div>
+                    <div class="result-card" data-vuln="csrf">
+                        <h4>CSRF</h4>
+                        <div class="risk-level unknown">Not Scanned</div>
+                    </div>
+                    <div class="result-card" data-vuln="directory">
+                        <h4>Directory Traversal</h4>
+                        <div class="risk-level unknown">Not Scanned</div>
+                    </div>
+                    <div class="result-card" data-vuln="ssl">
+                        <h4>SSL/TLS</h4>
+                        <div class="risk-level unknown">Not Scanned</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="sql">
+                <h3>SQL Injection Test Results</h3>
+                <div class="result-details" id="sql-results">
+                    <p>No scan performed yet. Enter a URL and click Scan to begin.</p>
+                </div>
+                <div class="remediation">
+                    <h4>OWASP Remediation Tips</h4>
+                    <ul>
+                        <li>Use prepared statements and parameterized queries</li>
+                        <li>Implement input validation and whitelisting</li>
+                        <li>Apply the principle of least privilege for database accounts</li>
+                        <li>Use ORM frameworks that are immune to SQLi</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="xss">
+                <h3>Cross-Site Scripting (XSS) Test Results</h3>
+                <div class="result-details" id="xss-results">
+                    <p>No scan performed yet. Enter a URL and click Scan to begin.</p>
+                </div>
+                <div class="remediation">
+                    <h4>OWASP Remediation Tips</h4>
+                    <ul>
+                        <li>Implement context-sensitive output encoding</li>
+                        <li>Use Content Security Policy (CSP) headers</li>
+                        <li>Enable HttpOnly and Secure flags for cookies</li>
+                        <li>Validate and sanitize all user input</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="csrf">
+                <h3>CSRF Test Results</h3>
+                <div class="result-details" id="csrf-results">
+                    <p>No scan performed yet. Enter a URL and click Scan to begin.</p>
+                </div>
+                <div class="remediation">
+                    <h4>OWASP Remediation Tips</h4>
+                    <ul>
+                        <li>Implement anti-CSRF tokens</li>
+                        <li>Use SameSite cookie attribute</li>
+                        <li>Require re-authentication for sensitive actions</li>
+                        <li>Check Origin and Referer headers for API requests</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="directory">
+                <h3>Directory Traversal Test Results</h3>
+                <div class="result-details" id="directory-results">
+                    <p>No scan performed yet. Enter a URL and click Scan to begin.</p>
+                </div>
+                <div class="remediation">
+                    <h4>OWASP Remediation Tips</h4>
+                    <ul>
+                        <li>Validate user input before processing file operations</li>
+                        <li>Use indirect object references</li>
+                        <li>Run web server with least privileges</li>
+                        <li>Implement proper access controls</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="ssl">
+                <h3>SSL/TLS Configuration Test Results</h3>
+                <div class="result-details" id="ssl-results">
+                    <p>No scan performed yet. Enter a URL and click Scan to begin.</p>
+                </div>
+                <div class="remediation">
+                    <h4>OWASP Remediation Tips</h4>
+                    <ul>
+                        <li>Disable SSLv2, SSLv3, and TLS 1.0/1.1</li>
+                        <li>Use strong cipher suites (avoid RC4, DES, etc.)</li>
+                        <li>Implement HTTP Strict Transport Security (HSTS)</li>
+                        <li>Ensure certificates are valid and from trusted CAs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Based on OWASP Top 10 Security Risks | Use responsibly and only on websites you own or have permission to test</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
